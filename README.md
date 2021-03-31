@@ -7,3 +7,4 @@
 6. https://hub.docker.com/repository/docker/gazman2013/kuber_home
 7. gcloud container clusters create kubernetes
 8. create manifesr deploy.yml
+9. kubectl apply -f deploy.yml
