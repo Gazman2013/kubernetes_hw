@@ -5,3 +5,4 @@
 4. а Тип сервиса - LoadBalancer
 5. https://github.com/Gazman2013/kuber_home
 6. https://hub.docker.com/repository/docker/gazman2013/kuber_home
+7. gcloud container clusters create kubernetes
