@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hw-deployment
+  labels:
+    app: hwapp
+spec:
+  selector:
+    matchLabels:
+      app: hwapp
+  template:
+    metadata:
+      labels:
+        app: hwapp
+    spec:
+      containers:
+        - name: hw-container
+          image: gazman2013/kuber_home:latest
+          ports:
+            - containerPort: 80
+
+---
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hw-scale
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hw-deployment
+  minReplicas: 3
+  maxReplicas: 7
+
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: AverageValue
+          averageValue: 100Mi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hw-service
+  labels:
+    app: hwapp
+spec:
+  type: LoadBalancer
+  selector:
+    app: hwapp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
