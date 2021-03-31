@@ -9,7 +9,6 @@
 8. create manifesr deploy.yml
 9. kubectl apply -f deploy.yml
 10. kubectl get hpa
-11. kubectl expose deployment kubernetes --type=LoadBalancer --port 80
 NAME       REFERENCE                  TARGETS                             MINPODS   MAXPODS   REPLICAS   AGE
 hw-scale   Deployment/hw-deployment   36975957333m/100Mi, <unknown>/50%   3         7         3          9m50s
 12. kubectl get services
