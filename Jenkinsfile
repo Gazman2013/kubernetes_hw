@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git 'https://github.com/Gazman2013/jenkins_hw_14.git'
+        git 'https://github.com/Gazman2013/kuber_home.git'
       }
     }
     stage('Building image') {
